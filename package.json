@@ -10,7 +10,8 @@
     "test": "npm-run-all before:tests actual:tests after:tests --continue-on-error",
     "after:tests": "npm run merge-report && npm run generate-report",
     "merge-report": "npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json",
-    "generate-report": "npx marge -i true mochawesome.json"
+    "generate-report": "npx marge -i true mochawesome.json",
+    "cy:verify": "./node_modules/.bin/cypress verify"
   },
   "license": "ISC",
   "devDependencies": {
