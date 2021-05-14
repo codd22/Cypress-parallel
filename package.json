@@ -1,0 +1,30 @@
+{
+  "name": "cypress_demo_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean-reports": "rm -rf cypress/results mochawesome-report && rm -rf mochawesome.json",
+    "before:tests": "npm run clean-reports && npm install",
+    "actual:tests": "./node_modules/.bin/cypress run",
+    "test": "npm-run-all before:tests actual:tests after:tests --continue-on-error",
+    "after:tests": "npm run merge-report && npm run generate-report",
+    "merge-report": "npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json",
+    "generate-report": "npx marge -i true mochawesome.json"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "3.5.0",
+    "cypress-xpath": "^1.6.1",
+    "faker": "^4.1.0",
+    "mocha": "^5.2.0",
+    "mochawesome": "^4.1.0",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^4.0.1"
+  },
+  "dependencies": {
+    "chai-colors": "^1.0.1",
+    "moment": "^2.24.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
