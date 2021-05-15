@@ -9,11 +9,6 @@ pipeline {
         sh 'npm i'
       }
     }
-    stage('cypress verify') {
-      steps {
-        sh 'npm run cy:verify'
-      }
-    }
     stage('e2e Tests') {
       parallel {
         stage('machine 1') {
