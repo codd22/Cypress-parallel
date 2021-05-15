@@ -7,7 +7,7 @@
     "clean-reports": "rm -rf cypress/results mochawesome-report && rm -rf mochawesome.json",
     "before:tests": "npm run clean-reports && npm install",
     "actual:tests": "npx cypress run",
-    "test": "npm-run-all before:tests actual:tests after:tests --continue-on-error",
+    "test": "npm-run-all before:tests \"actual:tests -- {@}\" after:tests --continue-on-error --",
     "after:tests": "npm run merge-report && npm run generate-report",
     "merge-report": "npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json",
     "generate-report": "npx marge -i true mochawesome.json",
@@ -15,7 +15,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "cypress": "3.5.0",
+    "cypress": "6.9.1",
     "cypress-xpath": "^1.6.1",
     "faker": "^4.1.0",
     "mocha": "^5.2.0",
