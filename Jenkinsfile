@@ -1,7 +1,9 @@
 pipeline {
-  agent any
-
-    tools {nodejs "node"}
+  agent {
+    docker {
+      image 'cypress/base:10'
+    }
+  }
 
   stages {
     stage('Dependencies') {
